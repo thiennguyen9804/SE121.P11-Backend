@@ -1,0 +1,13 @@
+POST http://localhost:8081/task
+Content-Type: application/x-www-form-urlencoded
+
+name = swimming &
+description = Go to the beach &
+priority = Vital
+
+###
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
