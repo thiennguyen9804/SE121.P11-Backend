@@ -25,6 +25,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    println("Current working directory: ${System.getProperty("user.dir")}")
     val repository: VocabularyRepository = VocabularyRepositoryImpl()
     configureDatabase()
     configureSerialization()
