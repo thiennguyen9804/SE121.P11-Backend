@@ -40,5 +40,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-json:0.56.0")
     implementation("io.ktor:ktor-serialization-gson-jvm:3.0.1")
     implementation("org.xerial:sqlite-jdbc:3.44.1.0")
+    implementation("org.postgresql:postgresql:42.7.1")
 
 }
