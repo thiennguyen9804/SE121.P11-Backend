@@ -42,7 +42,7 @@ fun Application.configureSerialization() {
 }
 
 fun configureDatabase() {
-    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
+//    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
 //    Database.connect("jdbc:sqlite:file:test?mode=memory&cache=shared", "org.sqlite.JDBC")
 //    TransactionManager.manager.defaultIsolationLevel = Connection.TRANSACTION_SERIALIZABLE
 //    transaction {
@@ -61,6 +61,24 @@ fun configureDatabase() {
 //            println("heap max size: ${heapMaxSize / 1024 / 1024}")
 //        }
 //    }
+    Database.connect(
+        url = "jdbc:postgresql://se121-p11-thiennguyen9804-c654.e.aivencloud.com:16268/defaultdb",
+        user = "avnadmin",
+        password = "AVNS_duK78wPXleZtn_VKtVb",
+    )
+    transaction {
+        SchemaUtils.create(Vocabularies, PartOfSpeeches, PhrasalVerbs, Definitions, Examples)
+        val x = preprocessing()
+        val vocabularyList = dataProcess(x)
+
+        for (vocabulary in vocabularyList) {
+            transaction {
+
+                addData(vocabulary)
+                println("Add successfully ${vocabulary.engVocab}")
+            }
+        }
+    }
 }
 
 
