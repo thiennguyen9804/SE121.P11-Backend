@@ -63,6 +63,7 @@ fun configureDatabase() {
 //    }
     Database.connect(
         url = "jdbc:postgresql://se121-p11-thiennguyen9804-c654.e.aivencloud.com:16268/defaultdb",
+        driver = "org.postgresql.Driver",
         user = "avnadmin",
         password = "AVNS_duK78wPXleZtn_VKtVb",
     )
