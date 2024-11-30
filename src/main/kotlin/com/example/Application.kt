@@ -43,48 +43,10 @@ fun Application.configureSerialization() {
 }
 
 fun Application.configureDatabase() {
-//    val projectDir = File(this::class.java.protectionDomain.codeSource.location.path).parentFile.parent
-//    val databasePath = "$projectDir/database/vocabulary.sqlite"
-    val sqlite = Database.connect("jdbc:sqlite:/app/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
-//    println(sqlite.url)
-//    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
-//    Database.connect("jdbc:sqlite:file:test?mode=memory&cache=shared", "org.sqlite.JDBC")
-//    TransactionManager.manager.defaultIsolationLevel = Connection.TRANSACTION_SERIALIZABLE
-//    transaction {
-//        SchemaUtils.create(Vocabularies, PartOfSpeeches, PhrasalVerbs, Definitions, Examples)
-//        val x = preprocessing()
-//        val vocabularyList = dataProcess(x)
-//
-//        for (vocabulary in vocabularyList) {
-//            transaction {
-//                addData(vocabulary)
-//                println("Add successfully ${vocabulary.engVocab}")
-//            }
-//            val heapSize = Runtime.getRuntime().totalMemory()
-//            val heapMaxSize = Runtime.getRuntime().maxMemory()
-//            println("heap size: ${heapSize / 1024 / 1024}")
-//            println("heap max size: ${heapMaxSize / 1024 / 1024}")
-//        }
-//    }
-//    Database.connect(
-//        url = "jdbc:postgresql://se121-p11-thiennguyen9804-c654.e.aivencloud.com:16268/defaultdb",
-//        driver = "org.postgresql.Driver",
-//        user = "avnadmin",
-//        password = "AVNS_duK78wPXleZtn_VKtVb",
-//    )
-//    transaction {
-//        SchemaUtils.create(Vocabularies, PartOfSpeeches, PhrasalVerbs, Definitions, Examples)
-//        val x = preprocessing()
-//        val vocabularyList = dataProcess(x)
-//
-//        for (vocabulary in vocabularyList) {
-//            transaction {
-//
-//                addData(vocabulary)
-//                println("Add successfully ${vocabulary.engVocab}")
-//            }
-//        }
-//    }
+    // For render run
+    Database.connect("jdbc:sqlite:/app/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
+    // For local run
+//    Database.connect("jdbc:sqlite:/app/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
 }
 
 
