@@ -21,5 +21,7 @@ RUN gradle buildFatJar --no-daemon
 FROM openjdk:22 AS runtime
 EXPOSE 8081:8081
 RUN mkdir /app
+RUN mkdir -p /app/database
+COPY database/vocabulary.sqlite /app/database/vocabulary.sqlite
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/ktor-docker-sample.jar
 ENTRYPOINT ["java","-jar","/app/ktor-docker-sample.jar"]

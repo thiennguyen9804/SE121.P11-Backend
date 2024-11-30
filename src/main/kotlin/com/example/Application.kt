@@ -45,7 +45,7 @@ fun Application.configureSerialization() {
 fun Application.configureDatabase() {
 //    val projectDir = File(this::class.java.protectionDomain.codeSource.location.path).parentFile.parent
 //    val databasePath = "$projectDir/database/vocabulary.sqlite"
-    val sqlite = Database.connect("jdbc:sqlite:/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
+    val sqlite = Database.connect("jdbc:sqlite:/app/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
 //    println(sqlite.url)
 //    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
 //    Database.connect("jdbc:sqlite:file:test?mode=memory&cache=shared", "org.sqlite.JDBC")
