@@ -23,7 +23,6 @@ fun Application.configureRouting(
             call.respondText("OK")
         }
 
-
         get("/words/{word}") {
             val word = call.parameters["word"] ?: return@get call.respond(HttpStatusCode.BadRequest)
             val res = repository.getVocabulary(word)
