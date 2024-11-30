@@ -15,6 +15,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.io.File
 import java.sql.Connection
 
 const val fileName = "real.txt"
@@ -25,7 +26,6 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    println("Current working directory: ${System.getProperty("user.dir")}")
     val repository: VocabularyRepository = VocabularyRepositoryImpl()
     configureDatabase()
     configureSerialization()
@@ -42,8 +42,12 @@ fun Application.configureSerialization() {
     }
 }
 
-fun configureDatabase() {
-    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
+fun Application.configureDatabase() {
+//    val projectDir = File(this::class.java.protectionDomain.codeSource.location.path).parentFile.parent
+//    val databasePath = "$projectDir/database/vocabulary.sqlite"
+    val sqlite = Database.connect("jdbc:sqlite:/database/vocabulary.sqlite", driver = "org.sqlite.JDBC")
+//    println(sqlite.url)
+//    Database.connect("jdbc:sqlite:database/vocabulary.sqlite", "org.sqlite.JDBC")
 //    Database.connect("jdbc:sqlite:file:test?mode=memory&cache=shared", "org.sqlite.JDBC")
 //    TransactionManager.manager.defaultIsolationLevel = Connection.TRANSACTION_SERIALIZABLE
 //    transaction {
