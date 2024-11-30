@@ -17,7 +17,8 @@ import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.sql.Connection
 
-const val fileName = "real.txt"
+const val fileName = "test.txt"
+
 
 fun main(args: Array<String>) {
     EngineMain.main(args)
@@ -28,6 +29,10 @@ fun Application.module() {
     configureDatabase()
     configureSerialization()
     configureRouting(repository)
+//    val heapSize = Runtime.getRuntime().totalMemory()
+//    val heapMaxSize = Runtime.getRuntime().maxMemory()
+//    println("heap size: ${heapSize / 1024 / 1024}")
+//    println("heap max size: ${heapMaxSize / 1024 / 1024}")
 }
 
 fun Application.configureSerialization() {
@@ -52,6 +57,10 @@ fun configureDatabase() {
                 addData(vocabulary)
                 println("Add successfully ${vocabulary.engVocab}")
             }
+            val heapSize = Runtime.getRuntime().totalMemory()
+            val heapMaxSize = Runtime.getRuntime().maxMemory()
+            println("heap size: ${heapSize / 1024 / 1024}")
+            println("heap max size: ${heapMaxSize / 1024 / 1024}")
         }
     }
 }

@@ -22,4 +22,4 @@ FROM openjdk:22 AS runtime
 EXPOSE 8081:8081
 RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/ktor-docker-sample.jar
-ENTRYPOINT ["java","-Xms128m ","-Xmx256m","-jar","/app/ktor-docker-sample.jar"]
+ENTRYPOINT ["java","-jar","/app/ktor-docker-sample.jar"]
