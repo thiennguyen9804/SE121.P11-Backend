@@ -27,9 +27,8 @@ class VocabularyRepositoryImpl : VocabularyRepository {
 //        }
 
 //        For render use
-        val dotenv = dotenv()
-        val credentialsJson = dotenv["CREDENTIALS_JSON"]
-            ?: throw IllegalArgumentException("CREDENTIALS_JSON is not set in .env file")
+        val credentialsJson = System.getenv("CREDENTIALS_JSON")
+            ?: throw IllegalArgumentException("Environment variable CREDENTIALS_JSON is not set!")
         val tempFile = createTempFile("credentials", ".json").apply {
             writeText(credentialsJson)
         }
