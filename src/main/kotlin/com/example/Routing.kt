@@ -20,16 +20,26 @@ fun Application.configureRouting(
 
     routing {
         get("/") {
-            call.respondText("OK")
+            call.respondText("Hello Kiana-chan!!!")
         }
 
-        get("/words/{word}") {
+        get("api/words/{word}") {
             val word = call.parameters["word"] ?: return@get call.respond(HttpStatusCode.BadRequest)
             val res = repository.getVocabulary(word)
             if(res == null) {
                 return@get call.respond(HttpStatusCode.NotFound)
             } else {
                 call.respond(res)
+            }
+        }
+
+        get("api/translate/{word}") {
+            val word = call.parameters["word"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+            try {
+                val res = repository.translate(word)
+                call.respond(res)
+            } catch(e: Exception) {
+                call.respond(HttpStatusCode.InternalServerError, e.localizedMessage)
             }
         }
     }

@@ -41,5 +41,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-gson-jvm:3.0.1")
     implementation("org.xerial:sqlite-jdbc:3.44.1.0")
     implementation("org.postgresql:postgresql:42.7.1")
+    implementation("com.google.cloud:google-cloud-translate:2.55.0")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
 
 }
