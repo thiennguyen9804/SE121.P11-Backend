@@ -21,9 +21,13 @@ typealias DomainDefinition = com.example.domain.data.Definition
 class VocabularyRepositoryImpl : VocabularyRepository {
     private var transService: Translate
     init {
-        val dotenv = dotenv {
-            filename = ".env"
-        }
+//        For local use
+//        val dotenv = dotenv {
+//            filename = ".env"
+//        }
+
+//        For render use
+        val dotenv = dotenv()
         val credentialsJson = dotenv["CREDENTIALS_JSON"]
             ?: throw IllegalArgumentException("CREDENTIALS_JSON is not set in .env file")
         val tempFile = createTempFile("credentials", ".json").apply {
