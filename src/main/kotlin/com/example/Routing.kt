@@ -4,6 +4,7 @@ import com.example.data.entity.Vocabulary
 import com.example.data.entity.toDomainVocabulary
 import com.example.data.table.Vocabularies
 import com.example.domain.VocabularyRepository
+import com.example.domain.data.TranslateResult
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -36,7 +37,8 @@ fun Application.configureRouting(
         get("api/translate/{word}") {
             val word = call.parameters["word"] ?: return@get call.respond(HttpStatusCode.BadRequest)
             try {
-                val res = repository.translate(word)
+                val text = repository.translate(word)
+                val res = TranslateResult(text)
                 call.respond(res)
             } catch(e: Exception) {
                 call.respond(HttpStatusCode.InternalServerError, e.localizedMessage)

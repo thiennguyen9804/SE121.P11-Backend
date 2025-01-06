@@ -25,6 +25,7 @@ class VocabularyRepositoryImpl : VocabularyRepository {
 //        val dotenv = dotenv {
 //            filename = ".env"
 //        }
+//        val credentialsJson = dotenv.get("CREDENTIALS_JSON")
 
 //        For render use
         val credentialsJson = System.getenv("CREDENTIALS_JSON")
